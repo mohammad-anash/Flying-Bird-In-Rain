@@ -139,18 +139,6 @@ const tick = () => {
 
   raycaster.set(rayOrigin, rayDirection);
 
-  if (getDrops) {
-    getDrops.position.y = -(elapsedTime * 10);
-
-    // Check for intersection with the floor
-    const intersects = raycaster.intersectObject(getDrops);
-    if (intersects.length > 0) {
-      scene.remove(getDrops); // Remove from scene
-      getDrops.geometry.dispose(); // Free geometry memory
-      getDrops.material.dispose();
-    }
-  }
-
   generateRainsDrop(20);
   window.requestAnimationFrame(tick);
   renderer.render(scene, camera);
