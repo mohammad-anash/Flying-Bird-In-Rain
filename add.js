@@ -71,13 +71,11 @@ directionalLight.shadow.mapSize.height = 1024;
 const controls = new OrbitControls(camera, canvas);
 controls.enableDamping = true;
 
-// raycaster
 const raycaster = new THREE.Raycaster();
 const rayOrigin = new THREE.Vector3(0, 0.1, 0); // Slightly above the floor
 const rayDirection = new THREE.Vector3(0, -1, 0); // Pointing downward
 rayDirection.normalize();
 
-// floor
 const floor = new THREE.Mesh(
   new THREE.PlaneGeometry(50, 50),
   new THREE.MeshStandardMaterial()
@@ -87,11 +85,9 @@ floor.rotation.x = -(Math.PI / 2);
 floor.receiveShadow = true;
 scene.add(floor);
 
-// textureLoader
 const textureLoader = new THREE.TextureLoader();
 const texture = textureLoader.load('textures/particles/1.png');
 
-// generate rains drops
 let getDrops = null;
 
 function generateRainsDrop(rainCount) {
@@ -117,7 +113,6 @@ function generateRainsDrop(rainCount) {
   scene.add(getDrops);
 }
 
-// renderer
 const renderer = new THREE.WebGLRenderer({ canvas: canvas });
 renderer.setSize(width, height);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
