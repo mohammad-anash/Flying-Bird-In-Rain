@@ -148,3 +148,5 @@ window.addEventListener('dblclick', (event) => {
     document.exitFullscreen();
   }
 });
+
+console.log('something Update');
